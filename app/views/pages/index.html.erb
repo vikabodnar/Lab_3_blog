@@ -1,12 +1,9 @@
-<% if current_user.nil? %>
-<%= link_to "Log in", user_session_path %> 
-<%else%> 
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
-<%=link_to "Create new post", new_post_path %>
-<%end%>
+<%= link_to "Create new post", new_post_path, class: "btn btn-info"%>
 <div>
 <% @posts.each do |post| %>
-  <h1><%= post.title %></h1>
+  <h1><%= link_to post.title, post_path(post.id) %></h1>
+  <p>Author: <%= post.user.nickname %></p>
+  Create at: <%= post.created_at %>
   <p><%= post.body %></p> 
   <% if current_user != nil and current_user.id == post.user_id %>
     <h2><p><%= link_to "Edit", edit_post_path(post.id)%> or 

@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
    has_many :posts
+   has_many :postcomments
+   validates :title, length: { in: 1..15}
+	validates :title, :body, presence: true
 end
