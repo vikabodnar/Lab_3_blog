@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
    has_many :posts
    has_many :postcomments
-   validates :title, length: { in: 1..15}
-	validates :title, :body, presence: true
+   validates :nickname, length: { in: 1..15}
+	validates :nickname, presence: true
 end
